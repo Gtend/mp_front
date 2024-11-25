@@ -3,22 +3,27 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import '../css/MainPage.css';
-// import cam1 from '../asset/cam1.png'
-// import cam2 from '../asset/cam2.png'
-// import cam3 from '../asset/cam3.png'
-// import cam4 from '../asset/cam4.png'
-// import cam5 from '../asset/cam5.jpg'
-// import cam6 from '../asset/cam6.jpg'
-// import cam7 from '../asset/cam7.jpg'
-// import findman from '../asset/findman.png'
+import cam1 from '../asset/cam4_cut.mp4'
+import cam2 from '../asset/cam4_cut.mp4'
+import cam3 from '../asset/cam4_cut.mp4'
+import cam4 from '../asset/cam4_cut.mp4'
+import cam5 from '../asset/cam4_cut.mp4'
+import cam6 from '../asset/cam4_cut.mp4'
+import cam7 from '../asset/cam4_cut.mp4'
+import findman from '../asset/ID9.jpg'
+
 // import video_2 from '../asset/video_2.mp4'
-// import aurgmentation from '../asset/aurgmentation.png'
-// import augmentation2 from '../asset/augmentation2.png'
+import aurgmentation from '../asset/ID9.jpg'
+import augmentation2 from '../asset/ID9.jpg'
 
 function MainPage() {
     const [selectedImage, setSelectedImage] = useState(null);
 
-
+    const images = [
+        { src: aurgmentation, alt: 'augmentation 1' },
+        { src: augmentation2, alt: 'augmentation 2' },
+        // 원하는 만큼 추가
+    ];
 
     // 파일 선택 시 실행되는 함수
     const [activeStates, setActiveStates] = useState({});
@@ -51,33 +56,44 @@ function MainPage() {
             <div className='left_space'>
                 <div className='inner_div activate'>
                     <span className='name_tag'>Cam1</span>
-                    
+                    <img src={cam1} alt="cam1" className='cam_img'/>
                 </div>
                 <div className='inner_div activate'>
                     <span className='name_tag'>Cam2</span>
-                    
+                    <img src={cam2} alt="cam2" className='cam_img'/>
                 </div>
                 <div className='inner_div'>
                     <span className='name_tag'>Cam3</span>
+                    <img src={cam3} alt="cam3" className='cam_img'/>
                 </div>
                 <div className='inner_div'>
                     <span className='name_tag'>Cam4</span> 
+                    <img src={cam4} alt="cam4" className='cam_img'/>
                 </div>
                 <div className='inner_div'>
                     <span className='name_tag'>Cam5</span>
-
+                    <video src="/video/video_2.mp4" className='cam_img' autoPlay loop muted></video>
                     {/* <img src={cam5} alt="cam5" className='cam_img'/> */}
                 </div>
                 <div className='inner_div'>
                     <span className='name_tag'>Cam6</span>
-
+                    <img src={cam6} alt="cam6" className='cam_img'/>
                 </div>
                 <div className='inner_div'>
                     <span className='name_tag'>Cam7</span>
-
+                    <img src={cam7} alt="cam7" className='cam_img'/>
                 </div>
                 <div className='inner_div span_two display_flex'>
                     <span className='name_tag'>accumulations</span>
+                    {images.map((image, index) => (
+                        <div key={index} onClick={() => handleToggle(index)} className='accumulations'>
+                            <img
+                                src={image.src}
+                                alt={image.alt}
+                                className={`accumulations_img ${activeStates[index] ? 'active' : ''}`}
+                            />
+                        </div>
+                    ))}
                 </div>
                 {/* <div className='inner_div'>
                     <span className='name_tag'>Cam9</span>
